@@ -1,0 +1,16 @@
+version: '2'
+services:
+    php:
+        image: andres42/php5.2-apache2.2
+        restart: always
+        volumes:
+            - "./web/src/:/usr/local/apache2/htdocs/"
+        ports:
+        - "10000:80"
+    mysql:
+        image: mysql:5.7
+        environment:
+            - MYSQL_ROOT_PASSWORD=toor
+        restart: always
+        volumes:
+            - "./init:/docker-entrypoint-initdb.d/"

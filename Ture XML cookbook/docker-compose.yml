@@ -1,0 +1,26 @@
+version: '2'
+services:
+    osrc:
+        image: php:rc-apache
+        restart: always
+        ports:
+        - "10001:80"
+        volumes:
+            - "./osrc/:/var/www/html/"
+            - "./flag:/flag"
+    isrc:
+        image: php:rc-apache
+        restart: always
+        expose:
+        - "80"
+        volumes:
+            - "./isrc/:/var/www/html/"
+        networks:
+            extnetwork:
+                ipv4_address: 192.168.1.8
+networks:
+   extnetwork:
+      ipam:
+         config:
+         - subnet: 192.168.1.0/24
+           gateway: 192.168.1.1

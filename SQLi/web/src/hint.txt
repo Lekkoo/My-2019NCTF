@@ -1,0 +1,6 @@
+$black_list = "/limit|by|substr|mid|,|admin|benchmark|like|or|char|union|substring|select|greatest|%00|\'|=| |in|<|>|-|\.|\(\)|#|and|if|database|users|where|table|concat|insert|join|having|sleep/i";
+
+
+If $_POST['passwd'] === admin's password,
+
+Then you will get the flag;

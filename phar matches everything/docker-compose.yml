@@ -1,0 +1,25 @@
+version: "2"
+services:
+  osrc:
+    restart: always
+    build: ./osrc
+    ports:
+      - "20000:80"
+    networks:
+            extnetwork:
+                ipv4_address: 10.0.0.2
+  isrc:
+    restart: always
+    build: ./isrc
+    expose:
+        - "9000"
+    networks:
+            extnetwork:
+                ipv4_address: 10.0.0.3
+networks:
+   extnetwork:
+      ipam:
+         config:
+         - subnet: 10.0.0.0/8
+           gateway: 10.0.0.1
+
